@@ -1,6 +1,6 @@
 [package]
 name = "nvmon"
-version = "0.3.0"
+version = "1.0.0"
 edition = "2021"
 description = "Terminal-based NVIDIA GPU monitoring tool with real-time graphs using NVML"
 license = "MIT"
