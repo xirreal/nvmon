@@ -997,7 +997,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
                                         let handle =
                                             OpenProcess(PROCESS_TERMINATE, FALSE, pid as u32);
-                                        if handle != 0 {
+                                        if handle != std::ptr::null_mut() {
                                             TerminateProcess(handle, 1);
                                         }
                                     }
