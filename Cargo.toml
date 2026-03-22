@@ -14,5 +14,10 @@ nvml-wrapper = "0.12"
 clap = { version = "4", features = ["derive"] }
 ratatui = { version = "0.30", features = ["crossterm"] }
 crossterm = "0.29"
-libc = "0.2"
 unicode-width = "0.2.2"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_Threading"] }

@@ -869,6 +869,7 @@ dependencies = [
  "nvml-wrapper",
  "ratatui",
  "unicode-width",
+ "windows-sys",
 ]
 
 [[package]]

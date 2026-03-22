@@ -983,8 +983,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         code if matches!(app.screen, AppScreen::Top) => {
                             if let Some(pid) = app.kill_confirm.take() {
                                 if code == KeyCode::Char('y') {
+                                    #[cfg(unix)]
                                     unsafe {
                                         libc::kill(pid as i32, libc::SIGTERM);
+                                    }
+
+                                    #[cfg(windows)]
+                                    {
+                                        use windows_sys::Win32::Foundation::FALSE;
+                                        use windows_sys::Win32::System::Threading::{
+                                            OpenProcess, TerminateProcess, PROCESS_TERMINATE,
+                                        };
+
+                                        let handle =
+                                            OpenProcess(PROCESS_TERMINATE, FALSE, pid as u32);
+                                        if handle != 0 {
+                                            TerminateProcess(handle, 1);
+                                        }
                                     }
                                 }
                             } else if app.filter_editing {
@@ -999,8 +1014,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             } else {
                                 match code {
                                     KeyCode::Up => {
-                                        app.selected_index =
-                                            app.selected_index.saturating_sub(1);
+                                        app.selected_index = app.selected_index.saturating_sub(1);
                                     }
                                     KeyCode::Down => {
                                         app.selected_index += 1;
@@ -1049,9 +1063,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                                             }
                                         });
 
-                                        if let Some(proc) =
-                                            display_procs.get(app.selected_index)
-                                        {
+                                        if let Some(proc) = display_procs.get(app.selected_index) {
                                             app.kill_confirm = Some(proc.pid);
                                         }
                                     }
