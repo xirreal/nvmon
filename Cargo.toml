@@ -2,12 +2,20 @@
 name = "nvml-dmon"
 version = "0.2.0"
 edition = "2021"
+description = "Terminal-based NVIDIA GPU monitoring tool with real-time graphs using NVML"
+license = "MIT"
+repository = "https://github.com/xirreal/nvmon"
+readme = "README.md"
+keywords = ["nvidia", "gpu", "monitoring", "nvml", "tui"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 nvml-wrapper = "0.12"
 clap = { version = "4", features = ["derive"] }
 ratatui = { version = "0.30", features = ["crossterm"] }
 crossterm = "0.29"
+libc = "0.2"
+unicode-width = "0.2.2"
 
 [[bin]]
 name = "nvml-dmon"
