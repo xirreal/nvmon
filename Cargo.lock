@@ -837,18 +837,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "nvml-dmon"
-version = "0.2.0"
-dependencies = [
- "clap",
- "crossterm",
- "libc",
- "nvml-wrapper",
- "ratatui",
- "unicode-width",
-]
-
-[[package]]
 name = "nvml-wrapper"
 version = "0.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -869,6 +857,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd23dbe2eb8d8335d2bce0299e0a07d6a63c089243d626ca75b770a962ff49e6"
 dependencies = [
  "libloading",
+]
+
+[[package]]
+name = "nvmon"
+version = "0.2.0"
+dependencies = [
+ "clap",
+ "crossterm",
+ "libc",
+ "nvml-wrapper",
+ "ratatui",
+ "unicode-width",
 ]
 
 [[package]]
