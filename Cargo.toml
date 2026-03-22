@@ -1,5 +1,5 @@
 [package]
-name = "nvml-dmon"
+name = "nvmon"
 version = "0.2.0"
 edition = "2021"
 description = "Terminal-based NVIDIA GPU monitoring tool with real-time graphs using NVML"
@@ -16,7 +16,3 @@ ratatui = { version = "0.30", features = ["crossterm"] }
 crossterm = "0.29"
 libc = "0.2"
 unicode-width = "0.2.2"
-
-[[bin]]
-name = "nvml-dmon"
-path = "src/main.rs"
