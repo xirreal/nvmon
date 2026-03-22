@@ -989,7 +989,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                                     }
 
                                     #[cfg(windows)]
-                                    {
+                                    unsafe {
                                         use windows_sys::Win32::Foundation::FALSE;
                                         use windows_sys::Win32::System::Threading::{
                                             OpenProcess, TerminateProcess, PROCESS_TERMINATE,
